@@ -39,3 +39,12 @@ button:not(:disabled):active{transform:scale(.973)}
 .refresh-spinner{height:13px;width:13px;border-width:1.5px}
 .last-updated{font-size:11px;color:#7b827d;font-variant-numeric:tabular-nums;white-space:nowrap}
 @media(max-width:600px){.refresh-controls{margin-left:0;justify-content:flex-start;width:100%}}
+
+.stock-caution{display:inline-block;margin-top:5px;color:#875522;font-size:12px;font-weight:650}.cash-tender{margin-top:15px}.cash-tender .field-help{margin-top:7px}
+
+/* Owner discounts: deliberately quiet, high-contrast checkout treatment */
+.price-edit{display:inline-flex;align-items:center;min-height:35px;margin-top:9px;border:1px solid #d9dcd5;border-radius:9px;background:#f6f6f3;padding:7px 10px;color:#272b29;font-size:11px;font-weight:750;cursor:pointer}
+.price-edit:active{background:#e7e9e2;transform:scale(.98)}
+.discount-label{font-size:11px;color:#36634a;margin-top:7px;font-weight:750}
+.discount-summary{display:flex;justify-content:space-between;gap:12px;padding:0 0 17px;font-size:12px;color:#36634a;font-weight:750}
+@media(prefers-reduced-motion:reduce){.price-edit:active{transform:none}}
