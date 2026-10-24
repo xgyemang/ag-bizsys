@@ -28,3 +28,14 @@ button:not(:disabled):active{transform:scale(.973)}
 .dialog{animation:dialog-enter .17s ease-out both}
 @keyframes dialog-enter{from{opacity:.65;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.screen-enter,.toast,.dialog{animation:none!important}.skeleton-block:after{display:none}button,.payment-option,.management-action{transition:none!important}button:active{transform:none!important}}
+
+/* v1.3: quiet, non-disruptive refresh affordance */
+.page-head{flex-wrap:wrap;gap:12px}
+.refresh-controls{display:flex;align-items:center;gap:9px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+.refresh-button{display:inline-flex;align-items:center;gap:6px;border:1px solid #dce0d9;background:#fff;color:#383f3a;border-radius:10px;padding:9px 11px;font-size:12px;font-weight:700;cursor:pointer;min-height:40px}
+.refresh-button:hover:not(:disabled){background:#f2f3ef}
+.refresh-button:disabled{opacity:.55;cursor:not-allowed}
+.refresh-button .icon{width:14px;height:14px}
+.refresh-spinner{height:13px;width:13px;border-width:1.5px}
+.last-updated{font-size:11px;color:#7b827d;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:600px){.refresh-controls{margin-left:0;justify-content:flex-start;width:100%}}
