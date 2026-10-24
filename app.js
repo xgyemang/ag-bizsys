@@ -25,7 +25,7 @@
   const banner=(msg)=>{const el=$('toast');el.textContent=msg;el.hidden=false;clearTimeout(banner.timer);banner.timer=setTimeout(()=>el.hidden=true,6000)};
   function normalError(err){if(err.name==='AbortError')return 'The request timed out. It may still have been recorded.';if(/Failed to fetch|NetworkError|Load failed/i.test(err.message))return 'Network problem. The request outcome is not confirmed.';return err.message||'Something went wrong.'}
   async function api(action,payload={},requestId,overrideToken){
-    if(!apiConfigured())throw Error('Set the TEST API URL in config.js before using MONO.');
+    if(!apiConfigured())throw Error('Set the production API URL in config.js before using GlepsyiCarePro.');
     const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),MAX_WAIT);
     try{
       const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,token:overrideToken===undefined?state.token:overrideToken,requestId:requestId||undefined,payload}),redirect:'follow',signal:ctl.signal,cache:'no-store'});
@@ -267,6 +267,4 @@
     restoreSaved();if(sessionValid()){$('loginScreen').hidden=true;$('workspace').hidden=false;refresh();if(state.pending)setTimeout(openPending,400)}
   }
   wire();
-  // Local contract-test hooks. No ability to post without the configured API.
-  window.MONO_DIAGNOSTICS=Object.freeze({configured:apiConfigured(),environment:config.ENVIRONMENT||'TEST',brand:'GlepsyiCarePro',apiActions:['login','logout','ping','products','balances','history','sale','restock','expense','capital','transfer','stockLoss']});
 })();

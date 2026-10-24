@@ -1,10 +1,9 @@
-// Copy the TEST deployment /exec URL here. No PINs or credentials in this file.
-// BANK_WALLET_ENABLED MUST be the same boolean as the isolated TEST spreadsheet's
-// Settings tab value. If uncertain, keep false (Bank is hidden, never guessed).
-// The current backend deliberately does not return a wallet-availability field.
+// GlepsyiCarePro production — public frontend configuration only.
+// Set the production Apps Script /exec URL after deployment.
+// NEVER place PINs, tokens or private spreadsheet IDs in this file.
 window.MONO_CONFIG = Object.freeze({
-  API_URL: 'https://script.google.com/macros/s/AKfycbwrF-UiOnYbljeQ2hifKYJ5jGJ0K1zu56u8wyS7bE_9BANjuoxgPnsGX_tDlnzXyaLu/exec',
+  API_URL: 'PASTE_PRODUCTION_APPS_SCRIPT_EXEC_URL_HERE',
   SHOP_NAME: 'GlepsyiCarePro',
-  ENVIRONMENT: 'TEST',
-  BANK_WALLET_ENABLED: true
+  ENVIRONMENT: 'PRODUCTION',
+  BANK_WALLET_ENABLED: false
 });
