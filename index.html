@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111315">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="A quiet, capable shop management application">
+  <title>MONO — Shop management</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div id="app" class="app-root">
+    <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
+      <div class="login-top"><span class="brand-mark">M<span class="brand-dot">.</span></span><span class="eyebrow">SHOP OPERATIONS / 01</span></div>
+      <main class="login-wrap">
+        <div class="login-symbol" aria-hidden="true"><span>m<span class="brand-dot">.</span></span></div>
+        <div class="eyebrow login-kicker">A BETTER WAY TO RUN YOUR SHOP</div>
+        <h1 id="loginTitle">Everything in<br><em>its place.</em></h1>
+        <p class="muted login-copy">Sign in to get started. Your shop, your numbers, one clear view.</p>
+        <form id="loginForm" class="login-form" autocomplete="on">
+          <label for="username">Username</label><input id="username" name="username" autocomplete="username" required placeholder="Your username" maxlength="30" spellcheck="false">
+          <label for="pin">Security PIN</label><div class="pin-wrap"><input id="pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{6,12}" minlength="6" maxlength="12" autocomplete="current-password" required placeholder="6–12 digits"><button type="button" id="togglePin" class="icon-btn" aria-label="Show PIN" aria-pressed="false"><svg class="icon"><use href="#i-eye"></use></svg></button></div>
+          <p role="alert" class="field-error" id="loginError" hidden></p>
+          <button class="btn btn-dark btn-full" id="loginButton" type="submit">Enter your workspace <svg class="icon"><use href="#i-arrow"></use></svg></button>
+        </form>
+        <div class="login-foot"><span class="status-dot"></span> Secure access · Private business data</div>
+      </main>
+      <div class="login-bottom"><span>MONO / RETAIL SYSTEMS</span><span id="environmentLabel">TEST ENVIRONMENT</span></div>
+    </section>
+    <section id="workspace" class="workspace" hidden>
+      <header class="topbar"><div class="topbar-brand"><span class="brand-mark">M<span class="brand-dot">.</span></span><span class="topbar-rule"></span><span class="topbar-caption">SHOP SYSTEM</span></div><div class="topbar-right"><span class="env-tag" id="envTag">TEST</span><button class="user-circle" id="accountButton" type="button" aria-label="Account menu"><svg class="icon"><use href="#i-user"></use></svg></button></div></header>
+      <main id="mainContent" class="main-content" tabindex="-1" aria-live="off"></main>
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button data-nav="home" type="button" class="nav-link active"><svg class="icon"><use href="#i-home"></use></svg><span>Home</span></button>
+        <button data-nav="sell" type="button" class="nav-link"><svg class="icon"><use href="#i-bag"></use></svg><span>Sell</span></button>
+        <button data-nav="stock" type="button" class="nav-link"><svg class="icon"><use href="#i-box"></use></svg><span>Stock</span></button>
+        <button data-nav="activity" type="button" class="nav-link"><svg class="icon"><use href="#i-clock"></use></svg><span>Activity</span></button>
+      </nav>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <div id="overlay" class="overlay" hidden><div id="dialog" class="dialog" role="dialog" aria-modal="true" aria-label="Action details"></div></div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3zM9 20v-7h6v7"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M4 8h16l-1 13H5L4 8Zm5 0V6a3 3 0 0 1 6 0v2"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5ZM3 7v10l9 5 9-5V7M12 12v10"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3ZM12 9v5m0 3v.5"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 6v5h-5M4 18v-5h5M6 9a8 8 0 0 1 14-1M18 15A8 8 0 0 1 4 16"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-log-out" viewBox="0 0 24 24"><path d="M10 4H4v16h6M14 7l5 5-5 5m5-5H9"/></symbol>
+  </defs></svg>
+</body></html>
